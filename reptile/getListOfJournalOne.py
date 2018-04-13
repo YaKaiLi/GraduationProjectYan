@@ -14,4 +14,11 @@ if __name__ == "__main__":
     pattern = re.compile('<div class="journal_right">\n.*?<a.*?</a>')
     items = re.findall(pattern, html)
     for item in items:
-        print(item)
+        temp = item.replace('\n', '')
+        temp = temp.replace(' ', '')
+        temp = temp.replace('"', '')
+        temp = temp.replace("'", '')
+        temp = temp.replace("<divclass=journal_right><ahref=/usercenter/data/journal?cmd=journal_page&entity_id=", '')
+        temp = temp.replace("target=_blankclass=journal_titleLOG_WRdata-click=titledata-log={actblock:journal_jump,type:according_journal_name}>", '')
+        temp = temp.replace('</a>', '')
+        print(temp[32:])
