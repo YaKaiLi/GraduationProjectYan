@@ -27,7 +27,7 @@ if __name__ == "__main__":
         temp = temp.replace("target=_blankclass=journal_titleLOG_WRdata-click=titledata-log={actblock:journal_jump,type:according_journal_name}>", '')
         temp = temp.replace('</a>', '')
         # SQL 插入语句
-        sql = "INSERT INTO list_of_journal(name) VALUES ('"+temp[32:]+"')"
+        sql = "INSERT INTO list_of_journal(name,baidusid) VALUES ('"+temp[32:]+"','"+temp[:32]+"')"
         # 执行sql语句
         cursor.execute(sql)
         # 提交到数据库执行
