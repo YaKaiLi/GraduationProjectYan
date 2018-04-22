@@ -32,12 +32,12 @@ shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
 
 
 #进行插值
-imp = preprocessing.Imputer(missing_values='NaN', strategy='mean', axis=0)
-imp.fit(shanchuwuguan)
-chazhijieguo = imp.transform(shanchuwuguan)
+#imp = preprocessing.Imputer(missing_values='NaN', strategy='mean', axis=0)
+#imp.fit(shanchuwuguan)
+#chazhijieguo = imp.transform(shanchuwuguan)
 
 #数据标准化
-biaozhunhua = preprocessing.scale(chazhijieguo)
+biaozhunhua = preprocessing.scale(shanchuwuguan)
 #数据归一化
 min_max_scale = preprocessing.MinMaxScaler()
 guiyihua = min_max_scale.fit_transform(biaozhunhua)
