@@ -30,6 +30,14 @@ shanchuwuguan = numpy.delete(shanchuwuguan, 0, axis=1)
 shanchuwuguan = numpy.delete(shanchuwuguan, 0, axis=1)
 shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
 shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
+shanchuwuguan = numpy.delete(shanchuwuguan, -1, axis=1)
 
 #for ceshi in shanchuwuguan:
 #    print(ceshi)
@@ -70,7 +78,7 @@ for i in range(0,guiyihua.shape[0]):
 #for x in guiyihua:
 #    print(x)
 for i in range(0,guiyihua.shape[0]):
-    sql_update = "update list_of_journal set yingxiangyinzi = "+str(guiyihua[i][0])+",sousuozhishu = "+str(guiyihua[i][1])+",fawenliang = "+str(guiyihua[i][2])+",beiyinliang = "+str(guiyihua[i][3])+",citationsperdocument = "+str(guiyihua[i][4])+",selfcites = "+str(guiyihua[i][5])+",externalcitesperdoc = "+str(guiyihua[i][6])+",citesperdoc = "+str(guiyihua[i][7])+",value = "+str(guiyihua[i][8])+" where id = "+str(guiyihua[i][9])
+    sql_update = "update list_of_journal set syingxiangyinzi = "+str(guiyihua[i][0])+",ssousuozhishu = "+str(guiyihua[i][1])+",sfawenliang = "+str(guiyihua[i][2])+",sbeiyinliang = "+str(guiyihua[i][3])+",scitationsperdocument = "+str(guiyihua[i][4])+",sselfcites = "+str(guiyihua[i][5])+",sexternalcitesperdoc = "+str(guiyihua[i][6])+",scitesperdoc = "+str(guiyihua[i][7])+",value = "+str(guiyihua[i][8])+" where id = "+str(guiyihua[i][9])
     cur.execute(sql_update)  # 像sql语句传递参数
     db.commit()
 

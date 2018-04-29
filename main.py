@@ -19,7 +19,7 @@ class MainWindow:
         tkinter.messagebox.showinfo("开始评估", "评估完毕")
 
     def buttonListener4(self, event):
-        tkinter.messagebox.showinfo("展示评估结果", "展示评估结果")
+        os.system("python3 resultGui.py")
 
     def __init__(self):
         self.frame = Tk()
