@@ -2,16 +2,27 @@
 from tkinter import *
 import tkinter.messagebox
 import os
+from subprocess import Popen, PIPE
 
 class MainWindow:
 
     def buttonListener1(self, event):
         os.system("python3 deleteAllData.py")
-        os.system("python3 "+self.jClass+"/getListOfJournal.py")
+        getListOfJournalList = Popen("python3 "+self.jClass+"/getListOfJournal.py", shell=True,stdout=PIPE, stderr=PIPE).stdout.readlines()
+        getListOfJournal = ""
+        for little in getListOfJournalList:
+            getListOfJournal = getListOfJournal+str(little,'utf-8')
+        #print(getListOfJournal)
+        self.one_text.insert(END, getListOfJournal)
         tkinter.messagebox.showinfo("获取期刊列表", "获取期刊列表完毕")
 
     def buttonListener2(self, event):
-        os.system("python3 getBaiduSInfo.py")
+        getBaiduSInfoList = Popen("python3 getBaiduSInfo.py", shell=True,stdout=PIPE, stderr=PIPE).stdout.readlines()
+        getBaiduSInfo = ""
+        for little in getBaiduSInfoList:
+            getBaiduSInfo = getBaiduSInfo+str(little,'utf-8')
+        #print(getListOfJournal)
+        self.two_text.insert(END, getBaiduSInfo)
         tkinter.messagebox.showinfo("获取期刊信息", "获取期刊信息完毕")
 
     def buttonListener3(self, event):
@@ -61,15 +72,25 @@ class MainWindow:
 
         self.frame.title('期刊评估系统')
 
-        self.button1 = Button(self.frame, text="获取期刊列表", width=50, height=5)
-        self.button2 = Button(self.frame, text="获取期刊信息", width=50, height=5)
-        self.button3 = Button(self.frame, text="开始评估", width=50, height=5)
-        self.button4 = Button(self.frame, text="展示评估结果", width=50, height=5)
+        self.button1 = Button(self.frame, text="获取期刊列表", width=20, height=5)
+        self.button2 = Button(self.frame, text="获取期刊信息", width=20, height=5)
+        self.button3 = Button(self.frame, text="开始评估", width=20, height=5)
+        self.button4 = Button(self.frame, text="展示评估结果", width=20, height=5)
 
         self.button1.grid(row=0, column=0, padx=5, pady=5)
-        self.button2.grid(row=1, column=0, padx=5, pady=5)
-        self.button3.grid(row=2, column=0, padx=5, pady=5)
-        self.button4.grid(row=3, column=0, padx=5, pady=5)
+        self.button2.grid(row=0, column=1, padx=5, pady=5)
+        self.button3.grid(row=0, column=2, padx=5, pady=5)
+        self.button4.grid(row=0, column=3, padx=5, pady=5)
+
+        self.one_text = Text(self.frame, height=20, width=20)
+        self.two_text = Text(self.frame, height=20, width=20)
+        self.three_text = Text(self.frame, height=20, width=20)
+        self.four_text = Text(self.frame, height=20, width=20)
+
+        self.one_text.grid(row=1, column=0, padx=5, pady=5)
+        self.two_text.grid(row=1, column=1, padx=5, pady=5)
+        self.three_text.grid(row=1, column=2, padx=5, pady=5)
+        self.four_text.grid(row=1, column=3, padx=5, pady=5)
 
         self.button1.bind("<ButtonRelease-1>",self.buttonListener1)
         self.button2.bind("<ButtonRelease-1>",self.buttonListener2)
